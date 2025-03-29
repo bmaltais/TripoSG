@@ -1,0 +1,5 @@
+pretrained_weights
+# Python
+.venv
+__pycache__
+build

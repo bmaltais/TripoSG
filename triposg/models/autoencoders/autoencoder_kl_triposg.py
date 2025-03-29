@@ -12,7 +12,7 @@ from diffusers.models.normalization import FP32LayerNorm, LayerNorm
 from diffusers.utils import logging
 from diffusers.utils.accelerate_utils import apply_forward_hook
 from einops import repeat
-from torch_cluster import fps
+# from torch_cluster import fps
 from tqdm import tqdm
 
 from ..attention_processor import FusedTripoSGAttnProcessor2_0, TripoSGAttnProcessor2_0
@@ -413,14 +413,10 @@ class TripoSGVAEModel(ModelMixin, ConfigMixin):
             torch.arange(batch_size).to(x.device).repeat_interleave(num_points)
         )
 
-        # fps sampling
+        # Random sampling as a replacement for fps
         sampling_ratio = 1.0 / 4
-        sampled_indices = fps(
-            flattened_points[:, :3],
-            batch_indices,
-            ratio=sampling_ratio,
-            random_start=self.training,
-        )
+        num_samples = int(flattened_points.shape[0] * sampling_ratio)
+        sampled_indices = torch.randperm(flattened_points.shape[0])[:num_samples]
         sampled_points = flattened_points[sampled_indices].view(
             batch_size, -1, num_channels
         )

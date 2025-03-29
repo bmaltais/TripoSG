@@ -1,0 +1,31 @@
+[project]
+name = "example-app"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10,<3.11"
+dependencies = [
+    "gradio",
+    "gradio_litmodel3d",
+    "gradio_image_prompter",
+    "diffusers",
+    "transformers",
+    "einops",
+    "huggingface_hub",
+    "jaxtyping",
+    "opencv-python",
+    "trimesh",
+    "typeguard",
+    "omegaconf",
+    "scikit-image",
+    "torch>=2.5.0",
+    "torchvision>=0.20.0",
+    "numpy==1.22.3",
+    "peft"
+]
+
+[tool.uv.sources]
+triposg = { path = "triposg" }
+
+[[tool.uv.index]]
+url = "https://download.pytorch.org/whl/cu124"
