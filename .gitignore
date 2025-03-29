@@ -3,3 +3,5 @@ pretrained_weights
 .venv
 __pycache__
 build
+
+*.glb

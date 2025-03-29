@@ -12,9 +12,9 @@ if %errorlevel% equ 0 (
     REM Check if the batch was started via double-click
     IF /i "%comspec% /c %~0 " equ "%cmdcmdline:"=%" (
         REM echo This script was started by double clicking.
-        cmd /k uv run --link-mode=copy --index-strategy unsafe-best-match python -m scripts.inference_triposg --image-input assets/example_data/hjswed.png
+        cmd /k uv run --link-mode=copy --index-strategy unsafe-best-match python -m scripts.inference_triposg --image-input "C:\Users\berna\Downloads\t.jpg" --num-inference-steps 75
     ) ELSE (
         REM echo This script was started from a command prompt.
-        uv run --link-mode=copy --index-strategy unsafe-best-match python -m scripts.inference_triposg --image-input assets/example_data/hjswed.png
+        uv run --link-mode=copy --index-strategy unsafe-best-match python -m scripts.inference_triposg --image-input "C:\Users\berna\Downloads\t.jpg" --num-inference-steps 75
     )
 )
